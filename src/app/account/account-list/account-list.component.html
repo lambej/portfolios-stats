@@ -1,0 +1,21 @@
+<div class="loading" *ngIf="!emittedFirst" class="account-list-component">
+    <mat-spinner class="app-spinner"></mat-spinner>
+</div>
+
+<mat-list class="account-list-component">
+    <mat-list-item *ngFor="let account of accounts$ | asyncNoZone as accounts; index as i" class="listAccount">
+        <div class="name">
+          {{account.name}}
+        </div>
+        <div class="type">
+            {{account.type}}
+        </div>
+        <div class="institution">
+            {{account.institution}}
+        </div>
+        <div class="actions">
+            <i class="fa fa-pencil-square-o" aria-hidden="true" (click)="editAccount(account)"></i>
+            <i class="fa fa-trash-o" aria-hidden="true" (click)="deleteAccount(account)"></i>
+        </div>
+    </mat-list-item>
+</mat-list>

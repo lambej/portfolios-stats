@@ -1,0 +1,23 @@
+<div class="loading" *ngIf="!emittedFirst" class="amount-per-account-list-component">
+    <mat-spinner class="app-spinner"></mat-spinner>
+</div>
+<mat-list class="amount-per-account-list-component">
+    <mat-list-item *ngFor="let AmountPerAccount of amountperaccount$ | asyncNoZone as AmountsPerAccount; index as i" class="listAmountPerAccount">
+        <div class="account">
+          {{AmountPerAccount.account}}
+        </div>
+        <br/>
+        <div class="date">
+            {{AmountPerAccount.date | date: 'yyyy-MM-dd'}}
+        </div>
+        <br/>
+        <div class="amount">
+            {{AmountPerAccount.amount}}
+        </div>
+        <br/>
+        <div class="actions">
+            <i class="fa fa-pencil-square-o" aria-hidden="true" (click)="editAmountPerAccount(AmountPerAccount)"></i>
+            <i class="fa fa-trash-o" aria-hidden="true" (click)="deleteAmountPerAccount(AmountPerAccount)"></i>
+        </div>
+    </mat-list-item>
+</mat-list>

@@ -1,0 +1,32 @@
+<div class="loading" *ngIf="!emittedFirst" class="added-position-list-component">
+    <mat-spinner class="app-spinner"></mat-spinner>
+</div>
+<mat-list class="added-position-list-component">
+    <mat-list-item *ngFor="let AddedPosition of addedPosition$ | asyncNoZone as AddedPositions; index as i" class="listAddedPosition">
+        <div class="symbol">
+          {{AddedPosition.symbol}}
+        </div>
+        <br/>
+        <div class="quantity_of_shares">
+            {{AddedPosition.quantity_of_shares}}
+        </div>
+        <br/>
+        <div class="unit_price">
+            {{AddedPosition.unit_price}}
+        </div>
+        <br/>
+        <div class="date">
+            {{AddedPosition.date | date: 'yyyy-MM-dd'}}
+        </div>
+        <br/>
+        <div class="currency">
+            {{AddedPosition.currency}}
+        </div>
+        <br/>
+        <div class="actions">
+            <i class="fa fa-pencil-square-o" aria-hidden="true" (click)="editAddedPosition(AddedPosition)"></i>
+            <i class="fa fa-trash-o" aria-hidden="true" (click)="deleteAddedPosition(AddedPosition)"></i>
+        </div>
+    </mat-list-item>
+</mat-list>
+

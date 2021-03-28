@@ -1,0 +1,28 @@
+<form autocomplete="off" *ngIf="AddedPosition" class="added-position-insert-component">
+    <mat-form-field>
+        <input matInput #input [(ngModel)]="AddedPosition.symbol" [autofocus]="true" name="symbol" placeholder="Symbol" />
+    </mat-form-field>
+    <br/>
+    <mat-form-field>
+        <input matInput #input type="number" [(ngModel)]="AddedPosition.quantity_of_shares" [autofocus]="true" name="quantity_of_shares" placeholder="Qty of Shares" />
+    </mat-form-field>
+    <br/>
+    <mat-form-field>
+        <input matInput #input type="number" [(ngModel)]="AddedPosition.unit_price" [autofocus]="true" name="unit_price" placeholder="Unit Price" />
+    </mat-form-field>
+    <br/>
+    <mat-form-field>
+        <input matInput #input type="date" [(ngModel)] ="dateValue" [autofocus]="true" name="date" placeholder="date" />
+    </mat-form-field>
+    <br/>
+    <mat-form-field appearance="fill">
+        <mat-label>Type</mat-label>
+        <mat-select [(ngModel)]="AddedPosition.currency" name="currency">
+            <mat-option *ngFor="let curr of currencies" [value]="curr.value">
+                {{curr.value}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br/>
+    <button mat-raised-button color="primary" (click)=submit()>insert</button>
+</form>

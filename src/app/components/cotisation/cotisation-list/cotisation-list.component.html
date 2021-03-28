@@ -1,0 +1,21 @@
+<div class="loading" *ngIf="!emittedFirst" class="cotisation-list-component">
+    <mat-spinner class="app-spinner"></mat-spinner>
+</div>
+
+<mat-list class="cotisation-list-component">
+    <mat-list-item *ngFor="let cotisation of cotisations$ | asyncNoZone as cotisations; index as i" class="listCotisation">
+        <div class="account">
+          {{cotisation.account}}
+        </div>
+        <div class="date">
+            {{cotisation.date | date: 'yyyy-MM-dd'}}
+        </div>
+        <div class="amount">
+            {{cotisation.amount}}
+        </div>
+        <div class="actions">
+            <i class="fa fa-pencil-square-o" aria-hidden="true" (click)="editCotisation(cotisation)"></i>
+            <i class="fa fa-trash-o" aria-hidden="true" (click)="deleteCotisation(cotisation)"></i>
+        </div>
+    </mat-list-item>
+</mat-list>

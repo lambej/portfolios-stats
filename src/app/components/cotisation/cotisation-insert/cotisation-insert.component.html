@@ -1,0 +1,20 @@
+<form autocomplete="off" *ngIf="Cotisation" class="cotisation-insert-component">
+    <mat-form-field appearance="fill">
+        <mat-label>Type</mat-label>
+        <mat-select [(ngModel)]="Cotisation.account" name="account">
+            <mat-option *ngFor="let acc of accounts$ | asyncNoZone as accounts; index as i" [value]="acc.name">
+                {{acc.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br/>
+    <mat-form-field>
+        <input matInput #input type="date" [(ngModel)] ="dateValue" [autofocus]="true" name="date" placeholder="date" />
+    </mat-form-field>
+    <br/>
+    <mat-form-field>
+        <input matInput #input type="number" [(ngModel)]="Cotisation.amount" [autofocus]="true" name="amount" placeholder="amount" />
+    </mat-form-field>
+    <br/>
+    <button mat-raised-button color="primary" (click)=submit()>insert</button>
+</form>

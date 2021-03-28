@@ -1,0 +1,33 @@
+<form autocomplete="off" *ngIf="AmountPerCompany" class="amount-per-company-insert-component">
+    <mat-form-field>
+        <input matInput #input [(ngModel)]="AmountPerCompany.symbol" [autofocus]="true" name="symbol" placeholder="Symbol" />
+    </mat-form-field>
+    <br/>
+    <mat-form-field appearance="fill">
+        <mat-label>Account</mat-label>
+        <mat-select [(ngModel)]="AmountPerCompany.account" name="account">
+            <mat-option *ngFor="let acc of accounts$ | asyncNoZone as accounts; index as i" [value]="acc.name">
+                {{acc.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br/>
+    <mat-form-field>
+        <input matInput #input type="date" [(ngModel)] ="dateValue" [autofocus]="true" name="date" placeholder="date" />
+    </mat-form-field>
+    <br/>
+    <mat-form-field>
+        <input matInput #input type="number" [(ngModel)]="AmountPerCompany.amount" [autofocus]="true" name="amount" placeholder="amount" />
+    </mat-form-field>
+    <br/>
+    <mat-form-field appearance="fill">
+        <mat-label>Type</mat-label>
+        <mat-select [(ngModel)]="AmountPerCompany.currency" name="currency">
+            <mat-option *ngFor="let curr of currencies" [value]="curr.value">
+                {{curr.value}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br/>
+    <button mat-raised-button color="primary" (click)=submit()>insert</button>
+</form>

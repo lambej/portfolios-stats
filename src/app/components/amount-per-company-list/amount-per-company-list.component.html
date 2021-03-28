@@ -1,0 +1,31 @@
+<div class="loading" *ngIf="!emittedFirst" class="amount-per-company-list-component">
+    <mat-spinner class="app-spinner"></mat-spinner>
+</div>
+<mat-list class="amount-per-company-list-component">
+    <mat-list-item *ngFor="let AmountPerCompany of amountpercompany$ | asyncNoZone as AmountsPerCompany; index as i" class="listAmountPerCompany">
+        <div class="symbol">
+          {{AmountPerCompany.symbol}}
+        </div>
+        <br/>
+        <div class="account">
+            {{AmountPerCompany.account}}
+          </div>
+          <br/>
+        <div class="date">
+            {{AmountPerCompany.date | date: 'yyyy-MM-dd'}}
+        </div>
+        <br/>
+        <div class="amount">
+            {{AmountPerCompany.amount}}
+        </div>
+        <br/>
+        <div class="currency">
+            {{AmountPerCompany.currency}}
+        </div>
+        <br/>
+        <div class="actions">
+            <i class="fa fa-pencil-square-o" aria-hidden="true" (click)="editAmountPerCompany(AmountPerCompany)"></i>
+            <i class="fa fa-trash-o" aria-hidden="true" (click)="deleteAmountPerCompany(AmountPerCompany)"></i>
+        </div>
+    </mat-list-item>
+</mat-list>
